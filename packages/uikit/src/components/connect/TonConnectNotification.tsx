@@ -93,6 +93,7 @@ const ConnectContent: FC<{
 
     const [error, setError] = useState<Error | null>(null);
     const { mutateAsync, isLoading } = useConnectTonConnectAppMutation();
+    console.error('error: ', error);
 
     const onSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
         e.preventDefault();

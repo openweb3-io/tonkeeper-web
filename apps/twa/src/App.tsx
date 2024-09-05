@@ -53,6 +53,7 @@ import React, { FC, PropsWithChildren, Suspense, useEffect, useMemo } from 'reac
 import { useTranslation } from 'react-i18next';
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
+import { DeepLinkSubscription } from './components/DeepLink';
 import StandardErrorBoundary from './components/ErrorBoundary';
 import { InitDataLogger } from './components/InitData';
 import { TwaReceiveNotification } from './components/ReceiveNotifications';
@@ -199,7 +200,7 @@ const TwaApp: FC<{ sdk: TwaAppSdk }> = ({ sdk }) => {
 
 const FullSizeWrapper = styled(Container)``;
 
-const Wrapper = styled(FullSizeWrapper)<{ standalone: boolean }>`
+const Wrapper = styled(FullSizeWrapper) <{ standalone: boolean }>`
     height: var(--app-height);
     transition: height 0.4s ease;
 
@@ -443,6 +444,9 @@ const MainPages: FC<{ showQrScan: boolean; sdk: TwaAppSdk }> = ({ showQrScan, sd
                 <MemoryScroll />
                 <Suspense>
                     <TonConnectSubscription />
+                </Suspense>
+                <Suspense>
+                    <DeepLinkSubscription />
                 </Suspense>
             </Wrapper>
         </TwaNotification>

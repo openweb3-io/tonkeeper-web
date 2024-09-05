@@ -25,7 +25,7 @@ export const getTonWalletConnections = async (
     const network = (await getDevSettings(storage)).tonNetwork;
 
     let result = await storage.get<AccountConnection[]>(
-        `${AppKey.CONNECTIONS}_${wallet.id}_${network}`
+        `${AppKey.CONNECTIONS}_${wallet.id.replace(':', '_')}_${network}`
     );
 
     if (!result) {
@@ -43,7 +43,7 @@ export const setAccountConnection = async (
 ) => {
     const network = (await getDevSettings(storage)).tonNetwork;
 
-    await storage.set(`${AppKey.CONNECTIONS}_${wallet.id}_${network}`, items);
+    await storage.set(`${AppKey.CONNECTIONS}_${wallet.id.replace(':', '_')}_${network}`, items);
 };
 
 export const saveAccountConnection = async (options: {
