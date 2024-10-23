@@ -1,4 +1,7 @@
+import { getWalletById, isAccountControllable } from '@tonkeeper/core/dist/entries/account';
 import { TonConnectAppRequest } from '@tonkeeper/core/dist/entries/tonConnect';
+import { isStandardTonWallet, WalletId } from '@tonkeeper/core/dist/entries/wallet';
+import { accountsStorage } from '@tonkeeper/core/dist/service/accountsStorage';
 import {
     replyBadRequestResponse,
     replyDisconnectResponse
@@ -18,9 +21,6 @@ import log from 'electron-log/main';
 import EventSourcePolyfill from 'eventsource';
 import { MainWindow } from './mainWindow';
 import { mainStorage } from './storageService';
-import { isStandardTonWallet, WalletId } from '@tonkeeper/core/dist/entries/wallet';
-import { accountsStorage } from '@tonkeeper/core/dist/service/accountsStorage';
-import { getWalletById, isAccountControllable } from '@tonkeeper/core/dist/entries/account';
 
 globalThis.Buffer = BufferPolyfill;
 
